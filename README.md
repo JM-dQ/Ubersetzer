@@ -13,3 +13,6 @@
 4. Run ubersetzer.exe from the terminal
 5. Get the translation of a word by copying it
 6. You can stop the program by copying "STOP"
+
+### Note
+It only works on windows.
