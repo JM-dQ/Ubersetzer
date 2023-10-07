@@ -10,5 +10,6 @@
 1. Open a command prompt
 2. Navigate to the release folder
 3. Make sure you have something in your clipboard (by copying something)
-4. run ubersetzer.exe
+4. Run ubersetzer.exe from the terminal
 5. Get the translation of a word by copying it
+6. You can stop the program by copying "STOP"
