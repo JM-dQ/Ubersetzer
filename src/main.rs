@@ -1,14 +1,29 @@
-use std::{thread/*, fmt::format*/};
+use std::thread;
 use std::time::Duration;
 use clipboard_win::{formats, get_clipboard};
 use std::fs;
 use reqwest::blocking::Client;
 use reqwest::header::{HeaderMap, HeaderValue, USER_AGENT};
 use std::error::Error;
-use serde::{Deserialize/* , Serialize*/};
-//use serde_json::Value;
+use serde::Deserialize;
+use std::io;
+use simulate;
 
 fn main() {
+    let mut input: String = String::new();
+    while input.trim() != String::from("y") && input.trim() != String::from("n") {
+        println!("Remplacer le texte par sa traduction automatiquement ? (y/n)");
+        input.clear();
+        io::stdin().read_line(&mut input).unwrap();
+    }
+    let do_replace_text: bool;
+    if input.trim() == "y" {
+        do_replace_text = true;
+    }
+    else {
+        do_replace_text = false;
+    }
+
     let api_key: String = get_api_key();
 
     let mut selected_word: String = get_clipboard(formats::Unicode).expect("Please copy something before running the program");
@@ -24,10 +39,24 @@ fn main() {
                 break;
             }
             word = selected_word.clone();
-            println!("{}", get_translation(&api_key, &word));
+            let translation = get_translation(&api_key, &word);
+            if do_replace_text {
+                replace_text(&word, &translation);
+            } else {
+                println!("{}", do_replace_text);
+            }
+            println!("{}", translation);
         }
 
     }
+}
+
+fn replace_text(word: &String, translation: &String) {
+    let mut text: String = word.to_owned();
+    text += " (";
+    text.push_str(&translation);
+    text += ") ";
+    simulate::type_str(&text).unwrap();
 }
 
 fn get_api_key() -> String {
