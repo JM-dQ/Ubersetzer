@@ -42,8 +42,6 @@ fn main() {
             let translation = get_translation(&api_key, &word);
             if do_replace_text {
                 replace_text(&word, &translation);
-            } else {
-                println!("{}", do_replace_text);
             }
             println!("{}", translation);
         }
