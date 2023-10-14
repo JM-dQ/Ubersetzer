@@ -6,7 +6,6 @@ use reqwest::blocking::Client;
 use reqwest::header::{HeaderMap, HeaderValue, USER_AGENT};
 use std::error::Error;
 use serde::{Deserialize/* , Serialize*/};
-//use serde_json::Value;
 
 fn main() {
     let api_key: String = get_api_key();
