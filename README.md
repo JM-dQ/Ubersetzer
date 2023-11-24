@@ -1,4 +1,8 @@
 # Übersetzer
+## ⚠
+I made a v2 which is much better. Find it here https://github.com/JM-dQ/Ubersetzer-v2.
+
+
 ## Installation
 1. Download and unzip release
 2. Create a free DeepL api account here: https://www.deepl.com/pro-api?cta=header-pro-api
